@@ -14,3 +14,12 @@ int main(void)
 
     return 0;
 }
+
+
+/*
+sizeof(int)   = 4
+sizeof(int *) = 8
+sizeof(p1)    = 40
+sizeof(p2)    = 80
+sizeof(p3)    = 8
+*/

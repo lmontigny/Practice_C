@@ -23,10 +23,7 @@ sizeof(p1)    = 40
 sizeof(p2)    = 80
 sizeof(p3)    = 8
 
-Equivalent
-*p, *(p+0), *(0+p), p[0]
-
+Note:
 int (*p)[10];   => p is a pointer to an array of 10 consecutive memory blocks (each can store data of type int) 
-
-
+Equivalent: *p, *(p+0), *(0+p), p[0]
 */

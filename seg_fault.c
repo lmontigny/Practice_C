@@ -4,4 +4,5 @@ int main()
 }
 
 // To generate core file
-ulimit -c unlimited
+// bash:
+// ulimit -c unlimited

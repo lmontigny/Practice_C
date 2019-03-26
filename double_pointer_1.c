@@ -1,0 +1,56 @@
+//Source: https://www.quora.com/What-is-the-advantage-of-passing-double-pointer-as-an-argument-to-a-function-in-c
+
+/* Case 1 */
+void node_alloc(struct list *node)
+{
+	node = (struct list *)malloc(sizeof(*node));
+	/* Do sanity checks here */
+ 
+}
+ 
+/* Case 2 */
+void node_alloc(struct list **node)
+{
+	*node = (struct list *)malloc(sizeof(**node));
+	/* Do sanity checks here */
+ 
+}
+ 
+/* Case 3 */
+struct list * node_alloc(struct list *node)
+{
+ 
+	node = (struct list *)malloc(sizeof(*node));
+	/* Do sanity checks here */
+	return node;
+}
+ 
+main()
+{
+	struct list *node = NULL;
+	node_alloc(node);
+	node_alloc(&node);
+	node = node_alloc(node);
+}
+
+/*
+Case 1:
+  This is definitely wrong because we are passing the argument as value to the function 
+  and not as a reference ie call by value. So even after allocating space in node_alloc(), 
+  the node variable in main() will not be updated to reflect this allocated address. 
+
+Case 2:
+   This is the right way to do the allocation because in this case, we are passing the 
+   address of the pointer as argument to the function therefore, it is call by reference.
+   So, after memory allocation in node_alloc(), the node variable in main() is updated to 
+   reflect the allocated address.
+
+Case 3:
+   Here, we have a  pointer and pass the value of the pointer which implies call by value. 
+   So how does this work? We update the value of the node variable in main() by assigning 
+   it the return address of node_alloc() which is the allocated memory address.
+
+As you can see , there is no distinct advantage of using a double pointer in this case. 
+There are so many ways where a pointer to a pointer is useful, you can check out the web 
+for more details on this.
+*/
